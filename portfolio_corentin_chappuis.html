@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Corentin Chappuis — Élève Ingénieur Data & IA à l'ECE Paris, Double Diplôme Master 2 Informatique et Développeur Full Stack.">
+    <title>Corentin Chappuis — Ingénieur Data & IA | Full Stack</title>
+
+    <!-- Google Fonts : Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuration Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slatebg: '#0b1120',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(8px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#0b1120] text-slate-200 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden">
+
+    <!-- Arrière-plan décoratif subtil (lueurs indigo & cyan) -->
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div class="absolute -top-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-indigo-600/15 blur-3xl"></div>
+        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] rounded-full bg-cyan-500/10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/3 w-[24rem] h-[24rem] rounded-full bg-indigo-500/10 blur-3xl"></div>
+    </div>
+
+    <!-- =========================================================
+         BARRE DE NAVIGATION STICKY
+    ========================================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#0b1120]/80 border-b border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / Nom -->
+                <a href="#accueil" class="flex items-center gap-2 group">
+                    <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-slate-950 font-mono font-bold text-sm shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+                        CC
+                    </span>
+                    <span class="font-mono font-semibold text-base sm:text-lg text-white tracking-tight">
+                        Corentin<span class="text-cyan-400">.dev</span>
+                    </span>
+                </a>
+
+                <!-- Liens Desktop -->
+                <nav class="hidden md:flex items-center gap-1">
+                    <a href="#projets" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">
+                        Projets
+                    </a>
+                    <a href="#competences" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">
+                        Compétences
+                    </a>
+                    <a href="#parcours" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">
+                        Parcours
+                    </a>
+                    <a href="#contact" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">
+                        Contact
+                    </a>
+                </nav>
+
+                <!-- Bouton GitHub + Menu Mobile -->
+                <div class="flex items-center gap-3">
+                    <!-- Pense à remplacer l'URL par ton vrai profil GitHub -->
+                    <a href="https://github.com/ton-pseudo-github" target="_blank" rel="noopener noreferrer"
+                       class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-slate-800/80 hover:bg-slate-700/80 text-white border border-slate-700/80 hover:border-cyan-500/50 transition-all shadow-sm">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+
+                    <!-- Bouton Menu Mobile -->
+                    <button id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu"
+                            class="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 border border-slate-800 transition-colors">
+                        <i data-lucide="menu" class="w-5 h-5" id="menu-icon-open"></i>
+                        <i data-lucide="x" class="w-5 h-5 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Déroulant -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800/80 bg-[#0b1120]/95 backdrop-blur-lg">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#projets" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/80 hover:text-cyan-400 transition-colors">
+                    Projets
+                </a>
+                <a href="#competences" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/80 hover:text-cyan-400 transition-colors">
+                    Compétences
+                </a>
+                <a href="#parcours" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/80 hover:text-cyan-400 transition-colors">
+                    Parcours
+                </a>
+                <a href="#contact" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/80 hover:text-cyan-400 transition-colors">
+                    Contact
+                </a>
+                <div class="pt-2 border-t border-slate-800">
+                    <a href="https://github.com/ton-pseudo-github" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-medium bg-slate-800 text-white border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                        </svg>
+                        Voir mon GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========================================================
+             HERO SECTION
+        ========================================================== -->
+        <section id="accueil" class="relative pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Colonne Texte -->
+                    <div class="lg:col-span-8 space-y-6">
+                        <!-- Badge de statut -->
+                        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/25 text-indigo-300 text-xs sm:text-sm font-medium">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400"></span>
+                            </span>
+                            <span>Élève Ingénieur Data &amp; IA • Double Diplôme M2 Informatique</span>
+                        </div>
+
+                        <!-- Titre Principal -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Corentin
+                            <span class="bg-gradient-to-r from-indigo-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                                Chappuis
+                            </span>
+                        </h1>
+
+                        <!-- Sous-titre -->
+                        <p class="text-lg sm:text-xl lg:text-2xl font-medium text-slate-200 leading-relaxed max-w-3xl">
+                            Je conçois des architectures de données robustes, des modèles d'IA et des applications Full Stack prêtes pour la production.
+                        </p>
+
+                        <!-- Bio courte -->
+                        <p class="text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl">
+                            Étudiant à l'ECE Paris (Major Data &amp; IA) et admis en Double Diplôme Master 2 Informatique à l'Université Lyon Lumière (2026/2027). Alliant rigueur d'ingénieur et mental de sportif de haut niveau.
+                        </p>
+
+                        <!-- Boutons CTA -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                            <a href="#projets"
+                               class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-indigo-400 hover:from-cyan-300 hover:to-indigo-300 shadow-lg shadow-cyan-500/20 transition-all hover:-translate-y-0.5">
+                                <span>Découvrir mes projets</span>
+                                <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#contact"
+                               class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-indigo-400/50 transition-all hover:-translate-y-0.5">
+                                <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+                                <span>Me contacter</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Carte Terminal Développeur (Desktop / Tablette) -->
+                    <div class="lg:col-span-4">
+                        <div class="rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl shadow-indigo-950/50 overflow-hidden">
+                            <!-- Barre de fenêtre -->
+                            <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                                </div>
+                                <span class="font-mono text-xs text-slate-400">profile.json</span>
+                            </div>
+                            <!-- Contenu Code -->
+                            <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 overflow-x-auto">
+<pre><code><span class="text-slate-500">{</span>
+  <span class="text-cyan-400">"role"</span>: <span class="text-emerald-300">"Data &amp; IA Engineer"</span>,
+  <span class="text-cyan-400">"ecole"</span>: <span class="text-emerald-300">"ECE Paris"</span>,
+  <span class="text-cyan-400">"double_diplome"</span>: <span class="text-emerald-300">"M2 Info Lyon 2"</span>,
+  <span class="text-cyan-400">"core_stack"</span>: [
+    <span class="text-amber-300">"Python"</span>, <span class="text-amber-300">"Java Spring"</span>,
+    <span class="text-amber-300">"SQL"</span>, <span class="text-amber-300">"HTMX"</span>, <span class="text-amber-300">"Docker"</span>
+  ],
+  <span class="text-cyan-400">"mindset"</span>: <span class="text-indigo-300">"High-Level Athlete"</span>
+<span class="text-slate-500">}</span></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION PROJETS & EXPÉRIENCES TECHNIQUES
+        ========================================================== -->
+        <section id="projets" class="scroll-mt-24 py-20 border-t border-slate-800/70">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- En-tête de section -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <p class="font-mono text-xs sm:text-sm uppercase tracking-wider text-cyan-400 mb-2">
+                            // Réalisations
+                        </p>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                            Projets &amp; Expériences Techniques
+                        </h2>
+                        <p class="mt-2 text-slate-400 text-sm sm:text-base max-w-xl">
+                            Cliquez sur un projet pour explorer son architecture, son contexte technique et ses défis relevés.
+                        </p>
+                    </div>
+
+                    <!-- Boutons de filtre interactifs -->
+                    <div id="filter-buttons" class="flex flex-wrap gap-2" role="tablist" aria-label="Filtrer les projets par catégorie">
+                        <button type="button" data-filter="Tous"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-indigo-500 text-white shadow-md shadow-indigo-500/25">
+                            Tous
+                        </button>
+                        <button type="button" data-filter="Data & Back-end"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/70">
+                            Data &amp; Back-end
+                        </button>
+                        <button type="button" data-filter="Full Stack"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/70">
+                            Full Stack
+                        </button>
+                        <button type="button" data-filter="IoT"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/70">
+                            IoT
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grille des Projets (générée dynamiquement en JS) -->
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Les cartes sont injectées ici -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION COMPÉTENCES TECHNIQUES
+        ========================================================== -->
+        <section id="competences" class="scroll-mt-24 py-20 border-t border-slate-800/70 bg-slate-900/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <p class="font-mono text-xs sm:text-sm uppercase tracking-wider text-cyan-400 mb-2">
+                        // Stack Technique
+                    </p>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                        Compétences Techniques
+                    </h2>
+                    <p class="mt-2 text-slate-400 text-sm sm:text-base max-w-2xl">
+                        Une approche hybride mêlant science des données, génie logiciel et déploiement en production.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Carte 1 : Data & IA -->
+                    <div class="group p-6 sm:p-7 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Data &amp; IA</h3>
+                                <p class="text-xs text-slate-400 font-mono">Modélisation &amp; Analyse</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-cyan-300 border border-slate-700/80">Machine Learning</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-cyan-300 border border-slate-700/80">Deep Learning</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">Data Science</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">Python</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">PowerBI</span>
+                        </div>
+                    </div>
+
+                    <!-- Carte 2 : Back-end & Bases de Données -->
+                    <div class="group p-6 sm:p-7 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Back-end &amp; Bases de Données</h3>
+                                <p class="text-xs text-slate-400 font-mono">Architecture &amp; Performance</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-indigo-300 border border-slate-700/80">Java (Spring Boot)</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-indigo-300 border border-slate-700/80">Python</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">PostgreSQL</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">MySQL</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 pt-3">
+                            <span class="text-slate-200 font-medium">3 ans d'expérience SQL :</span> requêtes complexes, optimisation de schémas et gestion des transactions.
+                        </p>
+                    </div>
+
+                    <!-- Carte 3 : Front-end -->
+                    <div class="group p-6 sm:p-7 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="p-3 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                                <i data-lucide="layout-template" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Front-end</h3>
+                                <p class="text-xs text-slate-400 font-mono">Interfaces Web Modernes</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-sky-300 border border-slate-700/80">HTMX</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-sky-300 border border-slate-700/80">Angular</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">HTML / CSS / JS</span>
+                        </div>
+                    </div>
+
+                    <!-- Carte 4 : DevOps, Cloud & Infra -->
+                    <div class="group p-6 sm:p-7 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                <i data-lucide="server-cog" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">DevOps, Cloud &amp; Infra</h3>
+                                <p class="text-xs text-slate-400 font-mono">Déploiement &amp; Sécurité</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-emerald-300 border border-slate-700/80">Git</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-emerald-300 border border-slate-700/80">Docker</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">AWS S3</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">HashiCorp Vault</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">API GitLab</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">Serveurs distants &amp; Raspberry Pi</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono bg-slate-800/90 text-slate-200 border border-slate-700/80">SharePoint</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION PARCOURS & PROFIL (2 COLONNES)
+        ========================================================== -->
+        <section id="parcours" class="scroll-mt-24 py-20 border-t border-slate-800/70">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <p class="font-mono text-xs sm:text-sm uppercase tracking-wider text-cyan-400 mb-2">
+                        // Profil
+                    </p>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                        Parcours &amp; Profil
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+                    <!-- Colonne 1 : Formation (Timeline) -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-cyan-400"></i>
+                            <h3 class="text-xl font-bold text-white">Formation</h3>
+                        </div>
+
+                        <div class="relative pl-6 border-l-2 border-slate-800 space-y-8">
+                            <!-- Étape 1 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-cyan-400 ring-4 ring-[#0b1120]"></span>
+                                <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                                    <span class="inline-block font-mono text-xs font-semibold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md mb-2">
+                                        2026 – 2027
+                                    </span>
+                                    <h4 class="text-base sm:text-lg font-bold text-white">
+                                        Double Diplôme Master 2 Informatique
+                                    </h4>
+                                    <p class="text-sm text-indigo-300 font-medium mt-0.5">
+                                        Université Lyon Lumière
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-slate-400 mt-2">
+                                        Approfondissement en informatique avancée, systèmes distribués et ingénierie des données.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Étape 2 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-indigo-400 ring-4 ring-[#0b1120]"></span>
+                                <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/30 transition-colors">
+                                    <span class="inline-block font-mono text-xs font-semibold text-indigo-300 bg-indigo-500/10 px-2.5 py-1 rounded-md mb-2">
+                                        2022 – 2027
+                                    </span>
+                                    <h4 class="text-base sm:text-lg font-bold text-white">
+                                        Diplôme d'Ingénieur — Major Data &amp; IA
+                                    </h4>
+                                    <p class="text-sm text-indigo-300 font-medium mt-0.5">
+                                        ECE Paris
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-slate-400 mt-2">
+                                        Spécialisation en Machine Learning, Deep Learning, Data Science et bases de données. Rigueur acquise en classe préparatoire intégrée.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Étape 3 -->
+                            <div class="relative">
+                                <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-500 ring-4 ring-[#0b1120]"></span>
+                                <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-colors">
+                                    <span class="inline-block font-mono text-xs font-semibold text-slate-300 bg-slate-800 px-2.5 py-1 rounded-md mb-2">
+                                        2022
+                                    </span>
+                                    <h4 class="text-base sm:text-lg font-bold text-white">
+                                        Baccalauréat Général — Mention Bien
+                                    </h4>
+                                    <p class="text-sm text-indigo-300 font-medium mt-0.5">
+                                        Lycée Notre-Dame-Les-Oiseaux
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-slate-400 mt-2">
+                                        Spécialités : Mathématiques, Physique-Chimie, NSI (Numérique et Sciences Informatiques).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colonne 2 : Au-delà du code -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-cyan-400"></i>
+                            <h3 class="text-xl font-bold text-white">Au-delà du code</h3>
+                        </div>
+
+                        <div class="space-y-5">
+                            <!-- Highlight 1 : Athlétisme -->
+                            <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/30 transition-all">
+                                <div class="flex items-start gap-4">
+                                    <div class="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
+                                        <i data-lucide="trophy" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base sm:text-lg font-bold text-white">
+                                            Athlétisme — Sportif de Haut Niveau (Cross-country)
+                                        </h4>
+                                        <p class="text-sm text-slate-300 mt-1.5 leading-relaxed">
+                                            Finaliste aux Championnats de France 2021, 3ème aux LIFA.
+                                        </p>
+                                        <p class="text-xs text-slate-400 mt-2">
+                                            Discipline quotidienne, résilience sous pression et culture de la performance collective et individuelle.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Highlight 2 : Bénévolat -->
+                            <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/30 transition-all">
+                                <div class="flex items-start gap-4">
+                                    <div class="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0">
+                                        <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base sm:text-lg font-bold text-white">
+                                            Bénévolat — Tuteur AFEV
+                                        </h4>
+                                        <p class="text-sm text-slate-300 mt-1.5 leading-relaxed">
+                                            Accompagnement scolaire de lycéens en Mathématiques et Philosophie.
+                                        </p>
+                                        <p class="text-xs text-slate-400 mt-2">
+                                            Pédagogie, écoute active et capacité à vulgariser des concepts analytiques exigeants.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Highlight 3 : Langues -->
+                            <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/30 transition-all">
+                                <div class="flex items-start gap-4">
+                                    <div class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
+                                        <i data-lucide="languages" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="w-full">
+                                        <h4 class="text-base sm:text-lg font-bold text-white mb-3">
+                                            Langues
+                                        </h4>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/70">
+                                                <span class="text-sm font-medium text-slate-200">Anglais</span>
+                                                <span class="font-mono text-xs font-semibold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded">B2</span>
+                                            </div>
+                                            <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/70">
+                                                <span class="text-sm font-medium text-slate-200">Allemand</span>
+                                                <span class="font-mono text-xs font-semibold text-indigo-300 bg-indigo-500/10 px-2 py-0.5 rounded">A2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION CONTACT
+        ========================================================== -->
+        <section id="contact" class="scroll-mt-24 py-20 border-t border-slate-800/70 bg-slate-900/30">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/50 border border-slate-800 shadow-2xl">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <p class="font-mono text-xs sm:text-sm uppercase tracking-wider text-cyan-400 mb-2">
+                            // Contact
+                        </p>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                            Discutons de vos projets IA &amp; Data
+                        </h2>
+                        <p class="mt-3 text-sm sm:text-base text-slate-400">
+                            À la recherche d'opportunités stimulantes en Intelligence Artificielle, Data Engineering ou Développement Full Stack.
+                        </p>
+                    </div>
+
+                    <!-- Coordonnées principales -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <!-- Email + Bouton Copier -->
+                        <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-slate-950/60 border border-slate-800">
+                            <div class="flex items-center gap-3.5 min-w-0">
+                                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs font-mono text-slate-400">Email</p>
+                                    <a href="mailto:Corentin.chappuis@edu.ece.fr" class="text-sm sm:text-base font-medium text-white hover:text-cyan-400 transition-colors truncate block">
+                                        Corentin.chappuis@edu.ece.fr
+                                    </a>
+                                </div>
+                            </div>
+                            <button id="copy-email-btn" type="button"
+                                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 hover:border-cyan-500/50 transition-all shrink-0 cursor-pointer">
+                                <i data-lucide="copy" class="w-4 h-4"></i>
+                                <span>Copier l'email</span>
+                            </button>
+                        </div>
+
+                        <!-- Téléphone -->
+                        <div class="flex items-center gap-3.5 p-5 rounded-2xl bg-slate-950/60 border border-slate-800">
+                            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-mono text-slate-400">Téléphone</p>
+                                <a href="tel:+33767923313" class="text-sm sm:text-base font-medium text-white hover:text-indigo-300 transition-colors">
+                                    07.67.92.33.13
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Localisation & Réseaux -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800/80">
+                        <div class="flex items-center gap-2.5 text-sm text-slate-300">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Maurecourt (Île-de-France) / Lyon</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <!-- Remplace les URLs par tes profils GitHub et LinkedIn -->
+                            <a href="https://github.com/ton-pseudo-github" target="_blank" rel="noopener noreferrer"
+                               class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-slate-800/90 hover:bg-slate-700 text-white border border-slate-700 transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://linkedin.com/in/ton-profil-linkedin" target="_blank" rel="noopener noreferrer"
+                               class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+    <footer class="border-t border-slate-800/80 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500">
+            <p>&copy; <span id="current-year"></span> Corentin Chappuis. Tous droits réservés.</p>
+            <p class="font-mono text-xs text-slate-500">Construit pour GitHub Pages • HTML &amp; Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <!-- =========================================================
+         MODALE DE DÉTAIL DE PROJET
+    ========================================================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div id="modal-card" class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0f172a] border border-slate-700/80 shadow-2xl p-6 sm:p-8 animate-fade-in">
+            <!-- Bouton fermer -->
+            <button id="modal-close-btn" type="button" aria-label="Fermer la fenêtre"
+                    class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Badge Organisation & Année -->
+            <div class="flex flex-wrap items-center gap-2 mb-3 pr-10">
+                <span id="modal-org" class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20"></span>
+                <span id="modal-year" class="font-mono text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300"></span>
+            </div>
+
+            <!-- Titre -->
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white leading-snug mb-4"></h3>
+
+            <!-- Contexte -->
+            <div class="mb-6">
+                <h4 class="font-mono text-xs uppercase tracking-wider text-slate-400 mb-2">Contexte &amp; Objectif</h4>
+                <p id="modal-description" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+            </div>
+
+            <!-- Points techniques clés -->
+            <div class="mb-6">
+                <h4 class="font-mono text-xs uppercase tracking-wider text-slate-400 mb-3">Points techniques clés</h4>
+                <ul id="modal-highlights" class="space-y-2.5 text-sm text-slate-300">
+                    <!-- Injecté en JS -->
+                </ul>
+            </div>
+
+            <!-- Stack -->
+            <div class="mb-8">
+                <h4 class="font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5">Technologies utilisées</h4>
+                <div id="modal-tags" class="flex flex-wrap gap-2">
+                    <!-- Injecté en JS -->
+                </div>
+            </div>
+
+            <!-- Liens d'action -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-5 border-t border-slate-800">
+                <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>Code source (GitHub)</span>
+                </a>
+                <a id="modal-demo-link" href="#" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-400 to-indigo-400 hover:from-cyan-300 hover:to-indigo-300 text-slate-950 transition-colors">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <span>Voir la démo / Projet</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         TOAST DE CONFIRMATION (COPIE EMAIL)
+    ========================================================== -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 border border-cyan-500/40 text-white shadow-xl shadow-cyan-950/50 animate-fade-in">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400">
+            <i data-lucide="check" class="w-4 h-4"></i>
+        </span>
+        <span class="text-sm font-medium">Email copié dans le presse-papiers !</span>
+    </div>
+
+    <!-- =========================================================
+         JAVASCRIPT : DONNÉES PROJETS, FILTRES, MODALE & COPIE
+    ========================================================== -->
+    <script>
+        /**
+         * Base de données des projets.
+         * Tu peux facilement ajouter de nouveaux projets IA / ML ici
+         * ou mettre à jour tes liens GitHub et Démo.
+         */
+        const PROJECTS = [
+            {
+                id: 1,
+                title: "Moteur de Test de Non-Régression (TNR) Automatisé",
+                organization: "Crédit Agricole CIB",
+                year: "2026",
+                categories: ["Data & Back-end", "Full Stack"],
+                icon: "shield-check",
+                summary: "Conception et développement de bout en bout d'un moteur TNR automatisé. Architecture d'une base de données complexe, interface web dynamique en relais et intégration sécurisée à l'écosystème bancaire.",
+                highlights: [
+                    "Architecture et modélisation d'une base de données SQL complexe pour historiser et comparer les campagnes de tests.",
+                    "Développement d'un back-end performant en Java Spring Boot couplé à une interface dynamique légère en HTMX.",
+                    "Intégration sécurisée aux outils cloud et CI/CD bancaires : gestion des secrets via HashiCorp Vault, stockage sur AWS S3 et automatisation via API GitLab."
+                ],
+                tags: ["Java Spring Boot", "HTMX", "SQL", "AWS S3", "HashiCorp Vault", "API GitLab"],
+                githubUrl: "https://github.com/ton-pseudo-github",
+                demoUrl: "#contact"
+            },
+            {
+                id: 2,
+                title: "Site Web Dynamique & Auto-hébergement (annegroutel.fr)",
+                organization: "Freelance",
+                year: "2025",
+                categories: ["Full Stack"],
+                icon: "globe",
+                summary: "Création complète d'un site web dynamique avec Angular et mise en place d'un hébergement local sur Raspberry Pi avec gestion sécurisée des accès.",
+                highlights: [
+                    "Conception de l'interface utilisateur responsive et développement de l'application complète avec le framework Angular.",
+                    "Déploiement autonome sur un serveur personnel Raspberry Pi avec configuration réseau et sécurisation des accès.",
+                    "Gestion complète du cycle de vie client : recueil du besoin, développement, mise en production et maintenance."
+                ],
+                tags: ["Angular", "Raspberry Pi", "Sécurité", "Full Stack"],
+                githubUrl: "https://github.com/ton-pseudo-github",
+                demoUrl: "https://annegroutel.fr"
+            },
+            {
+                id: 3,
+                title: "Plateforme de Knowledge Management & Extraction Data",
+                organization: "Stellantis CEMR",
+                year: "2025",
+                categories: ["Data & Back-end"],
+                icon: "folder-kanban",
+                summary: "Développement d'un wiki interne collaboratif et d'un site de support via SharePoint. Extraction massive de données techniques et gestion de bases de connaissances.",
+                highlights: [
+                    "Structuration et création d'un portail de support et d'un wiki collaboratif pour centraliser le savoir technique.",
+                    "Extraction massive, nettoyage et organisation de données techniques hétérogènes.",
+                    "Amélioration de l'accessibilité de l'information pour les équipes d'ingénierie."
+                ],
+                tags: ["SharePoint", "Extraction Data", "Knowledge Management"],
+                githubUrl: "https://github.com/ton-pseudo-github",
+                demoUrl: "#contact"
+            },
+            {
+                id: 4,
+                title: "Application de Messagerie à Distance Temps Réel",
+                organization: "Projet ECE",
+                year: "Académique",
+                categories: ["Full Stack", "Data & Back-end"],
+                icon: "message-square-code",
+                summary: "Création d'une application de chat complète : gestion du back-end via SQL, traitement des requêtes en temps réel et déploiement sur serveur Raspberry Pi personnel.",
+                highlights: [
+                    "Mise en place d'une base de données SQL pour la persistance des utilisateurs, salons et historiques de messages.",
+                    "Gestion efficace des requêtes temps réel côté serveur pour assurer une messagerie fluide.",
+                    "Hébergement complet et administration sur serveur Raspberry Pi personnel."
+                ],
+                tags: ["SQL", "Temps Réel", "Back-end", "Raspberry Pi"],
+                githubUrl: "https://github.com/ton-pseudo-github",
+                demoUrl: "#contact"
+            },
+            {
+                id: 5,
+                title: "Prototype IoT — Monitoring de la Qualité de l'Air",
+                organization: "Alphalab — Base Aérienne 118",
+                year: "2024",
+                categories: ["IoT"],
+                icon: "cpu",
+                summary: "Conception d'un prototype IoT pour la mesure de l'air avec visualisation des données en temps réel sur application mobile.",
+                highlights: [
+                    "Assemblage matériel et programmation embarquée sur carte Arduino avec capteurs environnementaux.",
+                    "Transmission sans fil des relevés en temps réel via protocole Bluetooth.",
+                    "Visualisation claire et instantanée des métriques de qualité de l'air sur application mobile dédiée."
+                ],
+                tags: ["Arduino", "Bluetooth", "IoT", "Mobile"],
+                githubUrl: "https://github.com/ton-pseudo-github",
+                demoUrl: "#contact"
+            }
+        ];
+
+        // Références DOM
+        const projectsGrid = document.getElementById('projects-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('project-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const toast = document.getElementById('toast');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        let activeFilter = 'Tous';
+        let toastTimeout = null;
+
+        /**
+         * Génère et affiche les cartes de projets selon le filtre actif.
+         */
+        function renderProjects(filter) {
+            const filtered = filter === 'Tous'
+                ? PROJECTS
+                : PROJECTS.filter(project => project.categories.includes(filter));
+
+            projectsGrid.innerHTML = filtered.map(project => `
+                <article
+                    data-project-id="${project.id}"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Voir les détails du projet ${project.title}"
+                    class="project-card group flex flex-col justify-between p-6 rounded-2xl bg-slate-900/75 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shadow-lg shadow-slate-950/40 animate-fade-in focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <div>
+                        <!-- En-tête de la carte -->
+                        <div class="flex items-start justify-between gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-cyan-400 border border-indigo-500/20 group-hover:bg-cyan-500/15 transition-colors">
+                                <i data-lucide="${project.icon}" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex items-center gap-2 text-right">
+                                <span class="font-mono text-xs text-slate-400 bg-slate-800/90 px-2.5 py-1 rounded-lg border border-slate-700/70">
+                                    ${project.year}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Organisation -->
+                        <p class="font-mono text-xs text-indigo-300 mb-1.5">
+                            ${project.organization}
+                        </p>
+
+                        <!-- Titre -->
+                        <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug mb-3">
+                            ${project.title}
+                        </h3>
+
+                        <!-- Résumé -->
+                        <p class="text-sm text-slate-400 leading-relaxed mb-5">
+                            ${project.summary}
+                        </p>
+                    </div>
+
+                    <div>
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${project.tags.map(tag => `
+                                <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-800/90 text-slate-300 border border-slate-700/60">
+                                    ${tag}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <!-- Pied de carte -->
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs font-medium text-cyan-400">
+                            <span>Voir les détails</span>
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            // Réinitialiser les icônes Lucide sur les nouveaux éléments
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Attacher les événements de clic et clavier sur chaque carte
+            document.querySelectorAll('.project-card').forEach(card => {
+                const openHandler = () => {
+                    const id = Number(card.getAttribute('data-project-id'));
+                    const project = PROJECTS.find(p => p.id === id);
+                    if (project) openModal(project);
+                };
+                card.addEventListener('click', openHandler);
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openHandler();
+                    }
+                });
+            });
+        }
+
+        /**
+         * Ouvre la modale avec les informations détaillées d'un projet.
+         */
+        function openModal(project) {
+            document.getElementById('modal-org').textContent = project.organization;
+            document.getElementById('modal-year').textContent = project.year;
+            document.getElementById('modal-title').textContent = project.title;
+            document.getElementById('modal-description').textContent = project.summary;
+
+            const highlightsEl = document.getElementById('modal-highlights');
+            highlightsEl.innerHTML = project.highlights.map(item => `
+                <li class="flex items-start gap-2.5">
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            const tagsEl = document.getElementById('modal-tags');
+            tagsEl.innerHTML = project.tags.map(tag => `
+                <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-800 text-cyan-300 border border-slate-700">
+                    ${tag}
+                </span>
+            `).join('');
+
+            const githubLink = document.getElementById('modal-github-link');
+            githubLink.href = project.githubUrl;
+
+            const demoLink = document.getElementById('modal-demo-link');
+            demoLink.href = project.demoUrl;
+            if (project.demoUrl.startsWith('#')) {
+                demoLink.removeAttribute('target');
+                demoLink.onclick = () => closeModal();
+                demoLink.querySelector('span').textContent = 'En discuter par contact';
+            } else {
+                demoLink.setAttribute('target', '_blank');
+                demoLink.onclick = null;
+                demoLink.querySelector('span').textContent = 'Visiter le site';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        /**
+         * Ferme la modale de projet.
+         */
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        /**
+         * Gère la copie de l'email dans le presse-papiers de manière compatible iframe.
+         */
+        function copyEmailToClipboard() {
+            const email = 'Corentin.chappuis@edu.ece.fr';
+            try {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = email;
+                tempInput.setAttribute('readonly', '');
+                tempInput.style.position = 'absolute';
+                tempInput.style.left = '-9999px';
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast();
+            } catch (err) {
+                console.error('Erreur lors de la copie de l’email :', err);
+            }
+        }
+
+        /**
+         * Affiche brièvement le toast de confirmation.
+         */
+        function showToast() {
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        /**
+         * Initialisation au chargement de la page.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Année dynamique dans le footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Rendu initial des projets et icônes
+            renderProjects(activeFilter);
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Gestion des boutons de filtre
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    activeFilter = btn.getAttribute('data-filter');
+
+                    filterButtons.forEach(b => {
+                        b.className = 'filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/70';
+                    });
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-indigo-500 text-white shadow-md shadow-indigo-500/25';
+
+                    renderProjects(activeFilter);
+                });
+            });
+
+            // Fermeture de la modale (bouton, clic extérieur, touche Échap)
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            // Copie de l'email
+            copyEmailBtn.addEventListener('click', copyEmailToClipboard);
+
+            // Toggle Menu Mobile
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden', isHidden);
+                menuIconClose.classList.toggle('hidden', !isHidden);
+            });
+
+            // Fermer le menu mobile au clic sur un lien
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
